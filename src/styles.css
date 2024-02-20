@@ -1,0 +1,40 @@
+@import "src/icons/icons.css";
+
+:root {
+    /* Colors */
+    --primary: #2c3e50;
+    --secondary: #45607d;
+    --grey: #151516;
+    --lightGrey: #1D1D1D;
+    --darkGrey: #0F0F10;
+    --backgroundGrey: #e0e0e0;
+    --highlight: #82543b;
+    --success: #25a05c;
+
+    /* Button Colors */
+    --button-white: #fff;
+    --button-yellow: #ecc858;
+    --button-green: #90ba90;
+    --button-red: #f85c5c;
+    --button-orange: darkorange;
+    --button-blue: #1b7abd;
+    --button-black: #000;
+    --button-turquiose: lightseagreen;
+
+    /* Gradient Colors */
+    --gradient-blue: linear-gradient(135deg, #2AA6DA 0%, #1B7B77 100%);
+    --gradient-lightblue: linear-gradient(-45deg, rgba(73, 84, 222, 1) 0%, rgba(73, 221, 216, 1) 100%);
+    --gradient-orange: linear-gradient(140deg, rgb(241 160 61), rgb(192 74 65), rgb(115, 52, 52));
+    --gradient-green: linear-gradient(to right bottom, #2be7b5, #1edea2, #16d58f, #13cb7c, #16c268, #0db866, #04ae64, #00a462, #00976c, #008971, #007b72, #006d6d);
+    --gradient-light: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    --gradient-purple: linear-gradient(to right top, #7f469d, #8242aa, #833db7, #8338c4, #8233d2, #8a35da, #9336e2, #9b38ea, #af41ee, #c24af2, #d554f7, #e65ffb);
+}
+
+html {
+    background-color: var(--grey);
+}
+
+svg {
+    width: 1.25em;
+    height: 1.25em;
+}

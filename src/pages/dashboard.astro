@@ -1,0 +1,23 @@
+---
+import "../styles.css";
+import TabBar from "../components/TabBar.svelte";
+import Header from "../components/Header.svelte";
+import Planer from "../components/Planer.svelte";
+---
+
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>SaarClimb - Dashboard</title>
+</head>
+<body>
+<Header title="Dashboard"/>
+
+<Planer client:load />
+
+<TabBar/>
+</body>
+</html>
