@@ -1,0 +1,9 @@
+body {
+    color: theme('colors.lighter');
+}
+
+table.fc-scrollgrid.fc-scrollgrid-liquid {
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 10px;
+}

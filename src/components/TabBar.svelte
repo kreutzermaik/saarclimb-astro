@@ -6,7 +6,7 @@
 </script>
 
 <header>
-    <nav class="bg-dark-grey fixed bottom-0">
+    <nav class="bg-dark-grey fixed bottom-0 z-10">
         <div class="grid grid-cols-4 w-screen gap-5 px-1 pt-1">
             <NavItem text="Dashboard" />
             <NavItem text="Planer" />

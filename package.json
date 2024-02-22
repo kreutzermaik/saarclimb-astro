@@ -18,5 +18,10 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "@supabase/supabase-js": "^2.8.0"
+  },
+  "devDependencies": {
+    "@fullcalendar/core": "^6.1.4",
+    "@fullcalendar/daygrid": "^6.1.4",
+    "@fullcalendar/interaction": "^6.1.4"
   }
 }

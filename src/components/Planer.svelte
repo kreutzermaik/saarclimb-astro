@@ -17,33 +17,17 @@
     let plans: any[];
     let newEvent: Event;
 
-    $: selectedDay = {day: 'Heute', value: TEXT_KEINE_EINHEITEN, checked: false};
-
-    async function fetchPlan() {
-        try {
-            return (await SupabaseService.getPlan()).planer.plan;
-        } catch (err: any) {
-            console.log(err);
-        }
-    }
-
-    /**
-     * on subscription insert
-     * @param payload
-     */
-    function onInsert(payload: any) {
-        // plans = (prev: any) => [...prev, payload.new];
-    }
-
-    /**
-     * on subscription update
-     */
-    async function onUpdate() {
-        plans = await fetchPlan();
-    }
+    let selectedDay = {
+        day: new Date().toLocaleDateString('de-DE', {weekday: 'long'}),
+        value: '',
+        checked: false
+    };
 
     onMount(async () => {
         plans = await fetchPlan();
+        setInitialDay();
+
+
         subscription = SupabaseService.subscribeToTable(
             "planer",
             "planer-channel",
@@ -53,11 +37,21 @@
         subscription.subscribe();
     });
 
-    onDestroy(() => {
-        if (subscription) {
-            subscription.unsubscribe();
+    function setInitialDay() {
+        plans.filter((item) => {
+            if (item.day === new Date().toLocaleDateString('de-DE', {weekday: 'long'})) {
+                selectedDay = item;
+            }
+        });
+    }
+
+    async function fetchPlan() {
+        try {
+            return (await SupabaseService.getPlan()).planer.plan;
+        } catch (err: any) {
+            console.log(err);
         }
-    });
+    }
 
     async function updateCalendar(item: Plan) {
         let checked = !item.checked;
@@ -94,6 +88,27 @@
         const formattedDate = date.toLocaleDateString('de-DE', {year: '2-digit', month: '2-digit', day: 'numeric'});
         return day + " (" + formattedDate + ")";
     }
+
+    /**
+     * on subscription insert
+     * @param payload
+     */
+    function onInsert(payload: any) {
+        // plans = (prev: any) => [...prev, payload.new];
+    }
+
+    /**
+     * on subscription update
+     */
+    async function onUpdate() {
+        plans = await fetchPlan();
+    }
+
+    onDestroy(() => {
+        if (subscription) {
+            subscription.unsubscribe();
+        }
+    });
 
 </script>
 

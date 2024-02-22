@@ -3,6 +3,7 @@ import "../styles.css";
 import TabBar from "../components/TabBar.svelte";
 import Header from "../components/Header.svelte";
 import Planer from "../components/Planer.svelte";
+import Calendar from "../components/Calendar.svelte";
 ---
 
 <html lang="de">
@@ -17,6 +18,8 @@ import Planer from "../components/Planer.svelte";
 <Header title="Dashboard"/>
 
 <Planer client:load />
+<br>
+<Calendar client:load />
 
 <TabBar/>
 </body>
