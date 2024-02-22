@@ -1,7 +1,7 @@
 ---
-import Planer from "../components/Planer.svelte";
-import TabBar from "../components/TabBar.svelte";
 import "../styles.css";
+import Header from "../components/Header.svelte";
+import Auth from "../components/Auth.svelte";
 ---
 
 <html lang="de">
@@ -10,9 +10,10 @@ import "../styles.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="generator" content={Astro.generator}/>
-    <title>SaarClimb</title>
+    <title>SaarClimb - Login</title>
 </head>
 <body>
-<TabBar />
+<Header title="Login"/>
+<Auth client:load type="login"/>
 </body>
 </html>

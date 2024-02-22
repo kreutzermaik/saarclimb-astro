@@ -85,6 +85,7 @@ export default class SupabaseService {
     }
 
     public static async updatePlan(plan: any): Promise<void> {
+        console.log(plan);
         await supabase
             .from("planer")
             .update({plan: plan})
