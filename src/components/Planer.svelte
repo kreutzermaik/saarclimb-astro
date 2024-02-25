@@ -10,6 +10,10 @@
     import Session from "../session.ts";
     import type {RealtimeChannel} from "@supabase/supabase-js";
     import Utils from "../Utils.ts";
+    import KraftIcon from "../icons/workout-icons/KraftIcon.svelte";
+    import ClimbingIcon from "../icons/workout-icons/ClimbingIcon.svelte";
+    import RunningIcon from "../icons/workout-icons/RunningIcon.svelte";
+    import MobilityIcon from "../icons/workout-icons/MobilityIcon.svelte";
 
     const TEXT_KEINE_EINHEITEN = 'Es stehen keine Einheiten an.';
 
@@ -85,7 +89,7 @@
         if (date.getTime() === new Date().getTime()) {
             day = "Heute";
         }
-        const formattedDate = date.toLocaleDateString('de-DE', {year: '2-digit', month: '2-digit', day: 'numeric'});
+        const formattedDate = date.toLocaleDateString('de-DE', {month: 'long', day: '2-digit'});
         return day + " (" + formattedDate + ")";
     }
 
@@ -135,9 +139,19 @@
             <br>
             <div class="text-lighter">
                 {#if selectedDay.value !== '' && selectedDay.value !== TEXT_KEINE_EINHEITEN}
-                    <div class="flex gap-0">
-                        <PointIcon/>
-                        <p>{selectedDay.value}</p>
+                    <div class="flex gap-0 justify-between">
+                        <div class="flex gap-2">
+                            {#if selectedDay.value === "Kraft"}
+                                <KraftIcon/>
+                            {:else if selectedDay.value === "Bouldern" || selectedDay.value === "Klettern"}
+                                <ClimbingIcon/>
+                            {:else if selectedDay.value === "Laufen"}
+                                <RunningIcon/>
+                            {:else if selectedDay.value === "Mobility" || selectedDay.value === "Stretching" || selectedDay.value === "Dehnen"}
+                                <MobilityIcon/>
+                            {/if}
+                            <p class="text-custom-silver mt-1">{selectedDay.value}</p>
+                        </div>
                         <div class="checkbox-wrapper ml-4 mt-0.5">
                             <label class="toggleButton">
                                 <input type="checkbox" checked={selectedDay.checked} bind:value={selectedDay.checked}

@@ -82,17 +82,14 @@
                     <div class="flex gap-2">
                         {#if item.title === "Kraft"}
                             <KraftIcon/>
-                            <p class="text-custom-silver mt-1">{item.title}</p>
                         {:else if item.title === "Bouldern" || item.title === "Klettern"}
                             <ClimbingIcon/>
-                            <p class="text-custom-silver mt-1">{item.title}</p>
                         {:else if item.title === "Laufen"}
                             <RunningIcon/>
-                            <p class="text-custom-silver mt-1">{item.title}</p>
                         {:else if item.title === "Mobility" || item.title === "Stretching" || item.title === "Dehnen"}
                             <MobilityIcon/>
-                            <p class="text-custom-silver mt-1">{item.title}</p>
                         {/if}
+                        <p class="text-custom-silver mt-1">{item.title}</p>
                     </div>
                     <p class="text-custom-silver text-sm">{Utils.formatDateToShortString(item.date)}</p>
                 </div>
@@ -104,7 +101,7 @@
         </div>
 
         <div id="calendar" class="hidden">
-            <Calendar/>
+            <Calendar />
         </div>
     </Card>
 
