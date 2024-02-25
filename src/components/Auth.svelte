@@ -49,7 +49,8 @@
      * login with email and password
      */
     async function loginWithEmail() {
-        console.log("login")
+        event.preventDefault();
+
         const {data, error} = await supabase.auth.signInWithPassword({
             email: email,
             password: password,
@@ -62,7 +63,7 @@
 
         await DataProvider.initUserData();
 
-        // await goto('/');
+        if (window) window.location.href = '/dashboard';
     }
 </script>
 
@@ -71,7 +72,7 @@
         <div class="login-container p-6 mx-auto space-y-4 md:space-y-6 sm:p-8">
             <form class="space-y-4 md:space-y-6" action="#">
                 <div>
-                    <label for="email" class="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">E-Mail
+                    <label for="email" class="block mb-2 text-sm text-left font-medium">E-Mail
                         Adresse</label>
                     <input type="email" name="email" id="email-field" on:change={e => setEmail(e)}
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -79,17 +80,17 @@
                 </div>
                 <div>
                     <label for="password"
-                           class="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">Passwort</label>
+                           class="block mb-2 text-sm text-left font-medium">Passwort</label>
                     <input type="password" name="password" id="password-field" on:change={e => setPassword(e)}
                            placeholder="••••••••"
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            required/>
                 </div>
                 <div id="login">
-                    <Button text="Einloggen" type="secondary" onClick={loginWithEmail}/>
+                    <Button text="Einloggen" type="secondary" onClick={loginWithEmail} />
                 </div>
                 <hr/>
-                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                <p class="text-sm font-light text-custom-silver">
                     Du hast noch keinen Account? <a href="/register"
                                                     class="font-medium text-primary-600 hover:underline dark:text-primary-500">Registrieren</a>
                 </p>

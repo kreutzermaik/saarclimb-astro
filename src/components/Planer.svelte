@@ -141,14 +141,14 @@
                 {#if selectedDay.value !== '' && selectedDay.value !== TEXT_KEINE_EINHEITEN}
                     <div class="flex gap-0 justify-between">
                         <div class="flex gap-2">
-                            {#if selectedDay.value === "Kraft"}
-                                <KraftIcon/>
-                            {:else if selectedDay.value === "Bouldern" || selectedDay.value === "Klettern"}
+                            {#if selectedDay.value === "Bouldern" || selectedDay.value === "Klettern"}
                                 <ClimbingIcon/>
                             {:else if selectedDay.value === "Laufen"}
                                 <RunningIcon/>
                             {:else if selectedDay.value === "Mobility" || selectedDay.value === "Stretching" || selectedDay.value === "Dehnen"}
                                 <MobilityIcon/>
+                            {:else}
+                                <KraftIcon/>
                             {/if}
                             <p class="text-custom-silver mt-1">{selectedDay.value}</p>
                         </div>

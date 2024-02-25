@@ -12,6 +12,7 @@
     import ClimbingIcon from "../icons/workout-icons/ClimbingIcon.svelte";
     import Button from "./Button.svelte";
     import Calendar from "./Calendar.svelte";
+    import {isLoggedIn} from "../store.ts";
 
 
     let subscription: RealtimeChannel;
@@ -80,14 +81,14 @@
             {#each events as item}
                 <div class="flex justify-between">
                     <div class="flex gap-2">
-                        {#if item.title === "Kraft"}
-                            <KraftIcon/>
-                        {:else if item.title === "Bouldern" || item.title === "Klettern"}
+                        {#if item.title === "Bouldern" || item.title === "Klettern"}
                             <ClimbingIcon/>
                         {:else if item.title === "Laufen"}
                             <RunningIcon/>
                         {:else if item.title === "Mobility" || item.title === "Stretching" || item.title === "Dehnen"}
                             <MobilityIcon/>
+                        {:else}
+                            <KraftIcon/>
                         {/if}
                         <p class="text-custom-silver mt-1">{item.title}</p>
                     </div>
@@ -101,7 +102,7 @@
         </div>
 
         <div id="calendar" class="hidden">
-            <Calendar />
+            <Calendar/>
         </div>
     </Card>
 
