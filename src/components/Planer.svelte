@@ -128,7 +128,6 @@
                     </div>
                 {/each}
             {/if}
-
         </div>
 
         <div class="mt-8">

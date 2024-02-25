@@ -4,6 +4,7 @@ import TabBar from "../components/TabBar.svelte";
 import Header from "../components/Header.svelte";
 import Planer from "../components/Planer.svelte";
 import Calendar from "../components/Calendar.svelte";
+import LastWorkouts from "../components/LastWorkouts.svelte";
 ---
 
 <html lang="de">
@@ -19,7 +20,9 @@ import Calendar from "../components/Calendar.svelte";
 
 <Planer client:load />
 <br>
-<Calendar client:load />
+<LastWorkouts client:load />
+<!--<br>
+<Calendar client:load />-->
 
 <TabBar/>
 </body>

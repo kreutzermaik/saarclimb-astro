@@ -18,4 +18,17 @@ export default class Utils {
         return [year, month, day].join('-');
     }
 
+    static formatDateToShortString(date: string) {
+        let newDate = new Date(date);
+        return newDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short', day: '2-digit' });
+    }
+
+    /**
+     * get sorted array by date string
+     * descending order
+     * @param array
+     */
+    static sortDates(array: any[] | null) {
+        return array?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }
 }

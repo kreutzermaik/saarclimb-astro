@@ -1,0 +1,24 @@
+.workout-icon {
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 2em;
+    height: 2em;
+}
+
+.kraft {
+    background: theme('colors.accent');
+}
+
+.running {
+    background: theme('colors.custom-pink');
+}
+
+.mobility {
+    background: theme('colors.custom-turquiose');
+}
+
+.climbing {
+    background: theme('colors.custom-orange');
+}
