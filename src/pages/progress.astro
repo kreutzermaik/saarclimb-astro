@@ -1,7 +1,7 @@
 ---
 import "../styles.css";
 import Header from "../components/Header.svelte";
-import SettingsComponent from "../components/Settings.svelte";
+import ProgressComponent from "../components/Progress.svelte";
 import TabBar from "../components/TabBar.svelte";
 ---
 
@@ -11,11 +11,11 @@ import TabBar from "../components/TabBar.svelte";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="generator" content={Astro.generator}/>
-    <title>SaarClimb - Einstellungen</title>
+    <title>SaarClimb - Fortschritt</title>
 </head>
 <body>
-<Header title="Einstellungen"/>
-<SettingsComponent client:load />
+<Header title="Fortschritt"/>
+<ProgressComponent client:load />
 <TabBar />
 </body>
 </html>
