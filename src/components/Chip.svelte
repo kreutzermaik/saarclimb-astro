@@ -1,9 +1,9 @@
 <script lang="ts">
-    export let text = "";
-    export let background = "";
+    export let text: string | undefined = "";
+    export var className: string = "";
 </script>
 
-<div class={`chip bg-custom-${background}`}>
+<div class={`chip ${className}`}>
     {text}
 </div>
 

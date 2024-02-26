@@ -163,36 +163,33 @@
      * @param color
      */
     function setColor(color: string) {
-        console.log(color)
-        console.log(color.grade)
-        /* if (dev) color = color.grade;*/
         switch (color) {
             case 'grün':
-                color = 'bg-custom-green text-white border-2 border-gray-400';
+                color = 'bg-custom-green';
                 break;
             case 'gelb':
-                color = 'bg-custom-yellow text-white border-2 border-gray-400';
+                color = 'bg-custom-yellow';
                 break;
             case 'orange':
-                color = 'bg-custom-orange text-white border-2 border-gray-400';
+                color = 'bg-custom-orange';
                 break;
             case 'blau':
-                color = 'bg-custom-blue text-white border-2 border-gray-400';
+                color = 'bg-custom-blue';
                 break;
             case 'weiß':
-                color = 'bg-white text-black border-2 border-gray-400';
+                color = 'bg-white text-black';
                 break;
             case 'türkis':
-                color = 'bg-custom-turquiose text-white border-2 border-gray-400';
+                color = 'bg-custom-turquiose';
                 break;
             case 'schwarz':
-                color = 'bg-black text-white border-2 border-gray-400';
+                color = 'bg-black';
                 break;
             case 'rot':
-                color = 'bg-custom-red text-white border-2 border-gray-400';
+                color = 'bg-custom-red';
                 break;
             case 'pink':
-                color = 'bg-custom-pink text-white border-2 border-gray-400';
+                color = 'bg-custom-pink';
                 break;
         }
         return color;
@@ -275,7 +272,7 @@
 
 
 {#if $isLoggedIn}
-    <main>
+    <main class="mb-20">
         <Card title="Boulderhalle auswählen">
             <label for="gyms" class="block mb-2 text-sm text-left font-medium text-custom-silver">
                 Aktuelle Halle
@@ -310,18 +307,79 @@
         <br>
 
         <Card title="Absolvierte Routen">
-            <div class="flex justify-between">
-                <Chip text="4b-5b" background="orange"/>
-                <div class="quantity">
-                    <input type="number" bind:value={value} min="0" class="bg-gray-100 text-gray-900 sm:text-sm rounded-lg"/>
-                    <div class="quantity-nav">
-                        <button class="quantity-button quantity-up" on:click={increment}> <PlusIcon/> </button>
-                        <button class="quantity-button quantity-down" on:click={decrement}> <MinusIcon/> </button>
-                    </div>
-                </div>
-            </div>
-            <Chip text="5b-6b" background="blue"/>
+            {#if progress.length > 0}
+                {#each progress as item}
+                    {#each item.progress as progressItem, index}
+                        <div class="flex justify-between">
+                            <Chip text={getGymGradeValueByName(progressItem.grade.grade)?.toString()}
+                                  className={`${setColor(progressItem.grade.grade)}`}
+                            />
+                            <div class="flex items-center">
+                                <button class="mb-[1em]" on:click={() => decrementValue(progressItem)}>
+                                    <MinusIcon/>
+                                </button>
+                                <input type="number" id={`input-${progressItem.grade}`} value={progressItem.value}
+                                       on:change={e => updateProgress(e.target?.value, progressItem.grade)} min="0"
+                                       class="bg-gray-100 text-gray-900 rounded-lg mb-[1em] mx-2"/>
+                                <button class="mb-[1em]" on:click={() => incrementValue(progressItem)}>
+                                    <PlusIcon/>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!--<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-3 py-2 w-2/12">
+                            <span id={`button-minus-${index}`} class="minus-button">
+                                <Button
+                                        text="-"
+                                        type="secondary"
+                                        opacity="opacity-80"
+                                        textSize="text-lg"
+                                        paddingX="px-3.5"
+                                        disabled="{progressItem.value <= 0}"
+                                        onClick={() => decrementValue(progressItem)}
+                                />
+                            </span>
+                                <input
+                                        type="number"
+                                        name="number"
+                                        id={`input-${progressItem.grade}`}
+                                        min={0}
+                                        on:change={e => updateProgress(e.target?.value, progressItem.grade)}
+                                        value={progressItem.value}
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5 mr-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-14 lg:w-44"
+                                />
+                                <span id={`button-plus-${index}`} class="plus-button">
+                                <Button
+                                        text="+"
+                                        type="secondary"
+                                        opacity="opacity-80"
+                                        textSize="text-lg"
+                                        paddingX="px-3.5"
+                                        onClick={() => incrementValue(progressItem)}
+                                />
+                            </span>
+                            </td>
+                            <td class="px-3 py-2 w-9/12">
+                                <div class="flex gap-5">
+                                    <div class={`${setColor(progressItem.grade.grade)} p-2.5 rounded-md w-full`}>
+                                        {getGymGradeValueByName(progressItem.grade.grade)}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>-->
+                    {/each}
+                {/each}
+            {:else}
+                <Button
+                        text="Starte mit dieser Boulderhalle!"
+                        type="secondary"
+                        onClick={() => initProgressDataForGym($currentGym.grades?.map(item => item.grade))}
+                />
+            {/if}
+
         </Card>
+
 
     </main>
 {:else}
