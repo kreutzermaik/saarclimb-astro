@@ -4,6 +4,7 @@
     import DataProvider from "../data-provider.ts";
     import Toast from "../Toast.ts";
     import Cache from "../cache.ts";
+    import Utils from "../Utils.ts";
 
     export let type: string;
 
@@ -42,15 +43,13 @@
 
         new Toast().push({content: Toast.REGISTERED_MESSAGE, style: 'success', duration: 3000});
 
-        // await goto('/');
+        Utils.navigateByUrl('/dashboard');
     }
 
     /**
      * login with email and password
      */
     async function loginWithEmail() {
-        event.preventDefault();
-
         const {data, error} = await supabase.auth.signInWithPassword({
             email: email,
             password: password,
@@ -63,7 +62,7 @@
 
         await DataProvider.initUserData();
 
-        if (window) window.location.href = '/dashboard';
+        Utils.navigateByUrl('/dashboard');
     }
 </script>
 
@@ -101,14 +100,14 @@
         <div class="login-container p-6 mx-auto space-y-4 md:space-y-6 sm:p-8">
             <form class="space-y-4 md:space-y-6" action="#">
                 <div>
-                    <label for="name" class="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">Vollständiger
+                    <label for="name" class="block mb-2 text-sm text-left font-medium">Vollständiger
                         Name</label>
                     <input type="name" name="name" on:change={e => { setName(e) }} id="name"
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            placeholder="Max Mustermann" required/>
                 </div>
                 <div>
-                    <label for="email" class="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">E-Mail
+                    <label for="email" class="block mb-2 text-sm text-left font-medium">E-Mail
                         Adresse</label>
                     <input type="email" name="email" on:change={e => { setEmail(e) }} id="email"
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -116,7 +115,7 @@
                 </div>
                 <div>
                     <label for="password"
-                           class="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">Passwort</label>
+                           class="block mb-2 text-sm text-left font-medium">Passwort</label>
                     <input type="password" name="password" on:change={e => { setPassword(e) }} id="password"
                            placeholder="••••••••"
                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -124,7 +123,7 @@
                 </div>
                 <Button text="Registrieren" type="secondary" onClick={registerWithEmail}/>
                 <hr/>
-                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                <p class="text-sm font-light">
                     Zurück zum <a href="/login"
                                   class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</a>
                 </p>

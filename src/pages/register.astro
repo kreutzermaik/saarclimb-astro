@@ -1,6 +1,7 @@
 ---
 import "../styles.css";
-import TabBar from "../components/TabBar.svelte";
+import Header from "../components/Header.svelte";
+import Auth from "../components/Auth.svelte";
 ---
 
 <html lang="de">
@@ -9,9 +10,10 @@ import TabBar from "../components/TabBar.svelte";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="generator" content={Astro.generator}/>
-    <title>SaarClimb</title>
+    <title>SaarClimb - Registrieren</title>
 </head>
 <body>
-<TabBar />
+<Header title="Registrieren"/>
+<Auth client:load type="register"/>
 </body>
 </html>

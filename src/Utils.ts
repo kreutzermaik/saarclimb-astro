@@ -31,4 +31,8 @@ export default class Utils {
     static sortDates(array: any[] | null) {
         return array?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
+
+    static navigateByUrl(url: string) {
+        if (window) window.location.href = url;
+    }
 }

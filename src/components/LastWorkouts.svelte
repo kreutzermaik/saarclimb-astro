@@ -75,35 +75,37 @@
 
 
 <main>
-    <Card title="Letzte Einheiten">
+    {#if $isLoggedIn}
+        <Card title="Letzte Einheiten">
 
-        {#if events !== undefined}
-            {#each events as item}
-                <div class="flex justify-between">
-                    <div class="flex gap-2">
-                        {#if item.title === "Bouldern" || item.title === "Klettern"}
-                            <ClimbingIcon/>
-                        {:else if item.title === "Laufen"}
-                            <RunningIcon/>
-                        {:else if item.title === "Mobility" || item.title === "Stretching" || item.title === "Dehnen"}
-                            <MobilityIcon/>
-                        {:else}
-                            <KraftIcon/>
-                        {/if}
-                        <p class="text-custom-silver mt-1">{item.title}</p>
+            {#if events !== undefined}
+                {#each events as item}
+                    <div class="flex justify-between">
+                        <div class="flex gap-2">
+                            {#if item.title === "Bouldern" || item.title === "Klettern"}
+                                <ClimbingIcon/>
+                            {:else if item.title === "Laufen"}
+                                <RunningIcon/>
+                            {:else if item.title === "Mobility" || item.title === "Stretching" || item.title === "Dehnen"}
+                                <MobilityIcon/>
+                            {:else}
+                                <KraftIcon/>
+                            {/if}
+                            <p class="text-custom-silver mt-1">{item.title}</p>
+                        </div>
+                        <p class="text-custom-silver text-sm">{Utils.formatDateToShortString(item.date)}</p>
                     </div>
-                    <p class="text-custom-silver text-sm">{Utils.formatDateToShortString(item.date)}</p>
-                </div>
-            {/each}
-        {/if}
+                {/each}
+            {/if}
 
-        <div class="flex justify-end mt-2">
-            <Button text="Alle Einheiten" type="primary" width="w-full" onClick={showCalendar}/>
-        </div>
+            <div class="flex justify-end mt-2">
+                <Button text="Alle Einheiten" type="primary" width="w-full" onClick={showCalendar}/>
+            </div>
 
-        <div id="calendar" class="hidden">
-            <Calendar/>
-        </div>
-    </Card>
+            <div id="calendar" class="hidden">
+                <Calendar/>
+            </div>
+        </Card>
+    {/if}
 
 </main>

@@ -22,3 +22,9 @@
 .climbing {
     background: theme('colors.custom-orange');
 }
+
+.info-icon {
+    color: theme('colors.custom-orange');
+    width: 2em;
+    height: 2em;
+}

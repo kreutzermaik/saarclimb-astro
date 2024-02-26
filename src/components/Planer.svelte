@@ -2,7 +2,6 @@
     import Card from "./Card.svelte";
     import ChipVertical from "./ChipVertical.svelte";
     import SupabaseService from "../api/supabase-service.ts";
-    import PointIcon from "../icons/PointIcon.svelte";
     import {onDestroy, onMount} from "svelte";
     import CheckboxIcon from "../icons/CheckboxIcon.svelte";
     import type {Plan} from "../types/Plan.ts";
@@ -14,6 +13,8 @@
     import ClimbingIcon from "../icons/workout-icons/ClimbingIcon.svelte";
     import RunningIcon from "../icons/workout-icons/RunningIcon.svelte";
     import MobilityIcon from "../icons/workout-icons/MobilityIcon.svelte";
+    import {isLoggedIn} from "../store.ts";
+    import NotLoggedIn from "./NotLoggedIn.svelte";
 
     const TEXT_KEINE_EINHEITEN = 'Es stehen keine Einheiten an.';
 
@@ -118,55 +119,60 @@
 
 
 <main>
-    <Card title="Wochenplan">
+    {#if $isLoggedIn}
+        <Card title="Wochenplan">
 
-        <div class="flex justify-between">
-            {#if plans !== undefined && plans.length > 0}
-                {#each plans as item}
-                    <div class="bg-light-grey text-light-text">
-                        <button class={item.value === '' ? 'cursor-default' : 'cursor-pointer'}>
-                            {item.day.slice(0, 2)}
-                        </button>
+            <div class="flex justify-between">
+                {#if plans !== undefined && plans.length > 0}
+                    {#each plans as item}
+                        <div class="bg-light-grey text-light-text">
+                            <button class={item.value === '' ? 'cursor-default' : 'cursor-pointer'}>
+                                {item.day.slice(0, 2)}
+                            </button>
 
-                        <ChipVertical content="{item.value}" onClick={() => selectedDay = item}/>
-                    </div>
-                {/each}
-            {/if}
-        </div>
-
-        <div class="mt-8">
-            <h3 class="text-lg">📅 {getDateHeader(selectedDay.day)}</h3>
-            <br>
-            <div class="text-lighter">
-                {#if selectedDay.value !== '' && selectedDay.value !== TEXT_KEINE_EINHEITEN}
-                    <div class="flex gap-0 justify-between">
-                        <div class="flex gap-2">
-                            {#if selectedDay.value === "Bouldern" || selectedDay.value === "Klettern"}
-                                <ClimbingIcon/>
-                            {:else if selectedDay.value === "Laufen"}
-                                <RunningIcon/>
-                            {:else if selectedDay.value === "Mobility" || selectedDay.value === "Stretching" || selectedDay.value === "Dehnen"}
-                                <MobilityIcon/>
-                            {:else}
-                                <KraftIcon/>
-                            {/if}
-                            <p class="text-custom-silver mt-1">{selectedDay.value}</p>
+                            <ChipVertical content="{item.value}" onClick={() => selectedDay = item}/>
                         </div>
-                        <div class="checkbox-wrapper ml-4 mt-0.5">
-                            <label class="toggleButton">
-                                <input type="checkbox" checked={selectedDay.checked} bind:value={selectedDay.checked}
-                                       on:click={() => updatePlan(selectedDay)}>
-                                <div>
-                                    <CheckboxIcon/>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                {:else }
-                    <p>{TEXT_KEINE_EINHEITEN}</p>
+                    {/each}
                 {/if}
             </div>
-        </div>
 
-    </Card>
+            <div class="mt-8">
+                <h3 class="text-lg">📅 {getDateHeader(selectedDay.day)}</h3>
+                <br>
+                <div class="text-lighter">
+                    {#if selectedDay.value !== '' && selectedDay.value !== TEXT_KEINE_EINHEITEN}
+                        <div class="flex gap-0 justify-between">
+                            <div class="flex gap-2">
+                                {#if selectedDay.value === "Bouldern" || selectedDay.value === "Klettern"}
+                                    <ClimbingIcon/>
+                                {:else if selectedDay.value === "Laufen"}
+                                    <RunningIcon/>
+                                {:else if selectedDay.value === "Mobility" || selectedDay.value === "Stretching" || selectedDay.value === "Dehnen"}
+                                    <MobilityIcon/>
+                                {:else}
+                                    <KraftIcon/>
+                                {/if}
+                                <p class="text-custom-silver mt-1">{selectedDay.value}</p>
+                            </div>
+                            <div class="checkbox-wrapper ml-4 mt-0.5">
+                                <label class="toggleButton">
+                                    <input type="checkbox" checked={selectedDay.checked}
+                                           bind:value={selectedDay.checked}
+                                           on:click={() => updatePlan(selectedDay)}>
+                                    <div>
+                                        <CheckboxIcon/>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    {:else }
+                        <p>{TEXT_KEINE_EINHEITEN}</p>
+                    {/if}
+                </div>
+            </div>
+        </Card>
+
+    {:else}
+        <NotLoggedIn/>
+    {/if}
 </main>

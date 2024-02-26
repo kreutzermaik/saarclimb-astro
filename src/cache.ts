@@ -1,3 +1,5 @@
+import {isLoggedIn} from "./store.ts";
+
 export default class Cache {
 
     /**
@@ -30,5 +32,15 @@ export default class Cache {
         if (window) {
             window.localStorage.removeItem(item);
         }
+    }
+
+    /**
+     * remove all items from cache
+     */
+    static clearOnLogout() {
+        if (window) {
+            window.localStorage.clear();
+        }
+        isLoggedIn.set(false);
     }
 }
