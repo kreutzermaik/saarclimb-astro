@@ -20,7 +20,7 @@ export const manifest: Partial<ManifestOptions> = {
     short_name: "SaarClimb", // Change this to your website's short name.
     description:
         "Die App für Boulderer und Kletterer aus dem Saarland und Umgebung.", // Change this to your websites description.
-    "theme_color": "#0F0F10",
+    theme_color: "#0F0F10",
     background_color: "#ffffff", // Change this to your background color.
     display: "standalone",
     icons: [
