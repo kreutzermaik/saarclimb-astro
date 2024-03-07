@@ -2,7 +2,7 @@ import {defineConfig} from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import { VitePWA } from "vite-plugin-pwa"
-import { manifest } from "./seoConfig.js"
+import { manifest } from "./seoConfig.ts"
 
 export default defineConfig({
     integrations: [
