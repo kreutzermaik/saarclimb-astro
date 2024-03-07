@@ -3,19 +3,12 @@ import "../styles.css";
 import Header from "../components/Header.svelte";
 import ProgressComponent from "../components/Progress.svelte";
 import TabBar from "../components/TabBar.svelte";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="de">
-<head>
-    <meta charset="utf-8"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="viewport" content="width=device-width"/>
-    <meta name="generator" content={Astro.generator}/>
-    <title>SaarClimb - Fortschritt</title>
-</head>
-<body>
-<Header title="Fortschritt"/>
-<ProgressComponent client:load />
-<TabBar />
-</body>
-</html>
+<Layout title="Fortschritt">
+    <Header title="Fortschritt"/>
+    <ProgressComponent client:load />
+    <TabBar />
+</Layout>
+

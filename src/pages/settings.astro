@@ -3,19 +3,11 @@ import "../styles.css";
 import Header from "../components/Header.svelte";
 import SettingsComponent from "../components/Settings.svelte";
 import TabBar from "../components/TabBar.svelte";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="de">
-<head>
-    <meta charset="utf-8"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="viewport" content="width=device-width"/>
-    <meta name="generator" content={Astro.generator}/>
-    <title>SaarClimb - Einstellungen</title>
-</head>
-<body>
-<Header title="Einstellungen"/>
-<SettingsComponent client:load />
-<TabBar />
-</body>
-</html>
+<Layout title="Einstellungen">
+    <Header title="Einstellungen"/>
+    <SettingsComponent client:load />
+    <TabBar />
+</Layout>
