@@ -2,8 +2,6 @@
     import Card from "./Card.svelte";
     import SupabaseService from "../api/supabase-service.ts";
     import {onDestroy, onMount} from "svelte";
-    import type {Plan} from "../types/Plan.ts";
-    import Session from "../session.ts";
     import type {RealtimeChannel} from "@supabase/supabase-js";
     import Utils from "../Utils.ts";
     import KraftIcon from "../icons/workout-icons/KraftIcon.svelte";
@@ -13,6 +11,7 @@
     import Button from "./Button.svelte";
     import Calendar from "./Calendar.svelte";
     import {isLoggedIn} from "../store.ts";
+    import CalendarIcon from "../icons/CalendarIcon.svelte";
 
 
     let subscription: RealtimeChannel;
@@ -94,7 +93,7 @@
             {/if}
 
             <div class="flex justify-end mt-2">
-                <Button text={`${!isCalendarVisible ? 'Kalender anzeigen' : 'Kalender ausblenden'}`} type="primary" width="w-full"
+                <Button text={`${!isCalendarVisible ? '📅 Kalender anzeigen' : '❌ Kalender ausblenden'}`} type="primary" width="w-full"
                         onClick={() => isCalendarVisible = !isCalendarVisible}/>
             </div>
 
