@@ -1,4 +1,6 @@
+import type {GradeItem} from "./GradeItem.ts";
+
 export type ProgressItem = {
-    grade: string,
+    grade: GradeItem,
     value: number
 }

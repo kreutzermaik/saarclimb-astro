@@ -13,6 +13,7 @@
     import Chip from "./Chip.svelte";
     import PlusIcon from "../icons/PlusIcon.svelte";
     import MinusIcon from "../icons/MinusIcon.svelte";
+    import type {GradeItem} from "../types/GradeItem.ts";
 
     let subscription: RealtimeChannel;
 
@@ -162,7 +163,10 @@
      * hotfix for <Chip/> Bug
      * @param color
      */
-    function setColor(color: string) {
+    function setColor(color: GradeItem) {
+        if (import.meta.env.DEV) {
+            color = color.grade;
+        }
         switch (color) {
             case 'grün':
                 color = 'bg-custom-green';
@@ -199,8 +203,8 @@
      * return grade value by grade name
      * @param grade
      */
-    function getGymGradeValueByName(grade: string) {
-        /*if (dev) grade = grade.grade;*/
+    function getGymGradeValueByName(grade: GradeItem) {
+        if (import.meta.env.DEV) grade = grade.grade;
         return $currentGym.grades?.find(item => item.grade === grade)?.value;
     }
 
@@ -311,16 +315,16 @@
                 {#each progress as item}
                     {#each item.progress as progressItem, index}
                         <div class="flex justify-between">
-                            <Chip text={getGymGradeValueByName(progressItem.grade.grade)?.toString()}
-                                  className={`${setColor(progressItem.grade.grade)}`}
+                            <Chip text={getGymGradeValueByName(progressItem?.grade)?.toString()}
+                                  className={`${setColor(progressItem?.grade)}`}
                             />
                             <div class="flex items-center">
                                 <button class="mb-[1em]" on:click={() => decrementValue(progressItem)}>
                                     <MinusIcon/>
                                 </button>
-                                <input type="number" id={`input-${progressItem.grade}`} value={progressItem.value}
-                                       on:change={e => updateProgress(e.target?.value, progressItem.grade)} min="0"
-                                       class="bg-gray-100 text-gray-900 rounded-lg mb-[1em] mx-2"/>
+                                <input type="number" id={`input-${progressItem?.grade}`} value={progressItem?.value}
+                                       on:change={e => updateProgress(e.target?.value, progressItem?.grade)} min="0"
+                                       class="bg-gray-100 text-gray-900 rounded-lg lg:w-96 w-32 mb-[1em] mx-2"/>
                                 <button class="mb-[1em]" on:click={() => incrementValue(progressItem)}>
                                     <PlusIcon/>
                                 </button>
