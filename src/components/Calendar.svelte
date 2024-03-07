@@ -7,6 +7,8 @@
     import LoadingSpinner from "./LoadingSpinner.svelte";
     import type {RealtimeChannel} from "@supabase/supabase-js";
     import Card from "./Card.svelte";
+    import {colors} from "../TailwindColors";
+
 
     let subscription: RealtimeChannel;
     let calendarEl: any;
@@ -17,16 +19,42 @@
      * create fullcalendar with config
      */
     function createCalendar() {
-        const calendar = new FullCalendar.Calendar(calendarEl as HTMLDivElement, {
+        events.map((event: any) => {
+            event.color = getColors(event).color;
+            event.textColor = getColors(event).textColor;
+        });
+
+        let calendar = new FullCalendar.Calendar(calendarEl as HTMLDivElement, {
             plugins: [dayGridPlugin, InteractionPlugin],
             initialView: "dayGridMonth",
-            events: events,
             firstDay: 1,
             locale: "de",
             dateClick: handleDateClick,
+            events: events
         });
+
         calendar.render();
     }
+
+    /**
+     * get colors for events
+     * @param event
+     */
+    function getColors(event: any) {
+        let color: any = '';
+        let textColor = '#fff';
+        if (event.title === 'Bouldern' || event.title === 'Klettern') {
+            color = colors["custom-orange"];
+        } else if (event.title === 'Laufen') {
+            color = colors["custom-pink"];
+        } else if (event.title === 'Mobility' || event.title === 'Stretching' || event.title === 'Dehnen') {
+            color = colors["custom-turquiose"];
+        } else {
+            color = colors.accent;
+        }
+        return {color: color, textColor: textColor};
+    }
+
 
     /**
      * fetch all events for current user
