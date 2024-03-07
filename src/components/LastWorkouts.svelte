@@ -17,6 +17,7 @@
 
     let subscription: RealtimeChannel;
     let events: any = [];
+    let isCalendarVisible: boolean = false;
 
 
     onMount(async () => {
@@ -44,12 +45,6 @@
         return eventList.slice(0, 5);
     }
 
-    function showCalendar() {
-        if (window) {
-            document.getElementById("calendar")?.classList.remove("hidden");
-        }
-    }
-
     /**
      * on subscription insert
      * @param payload
@@ -74,7 +69,7 @@
 </script>
 
 
-<main>
+<main class="mb-24">
     {#if $isLoggedIn}
         <Card title="Letzte Einheiten">
 
@@ -99,13 +94,13 @@
             {/if}
 
             <div class="flex justify-end mt-2">
-                <Button text="Alle Einheiten" type="primary" width="w-full" onClick={showCalendar}/>
+                <Button text={`${!isCalendarVisible ? 'Kalender anzeigen' : 'Kalender ausblenden'}`} type="primary" width="w-full"
+                        onClick={() => isCalendarVisible = !isCalendarVisible}/>
             </div>
 
-            <div id="calendar" class="hidden">
+            {#if isCalendarVisible}
                 <Calendar/>
-            </div>
+            {/if}
         </Card>
     {/if}
-
 </main>

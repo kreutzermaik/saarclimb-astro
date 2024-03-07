@@ -115,13 +115,13 @@
      * remove subscription on cleanup
      */
     onDestroy(() => {
-        // subscription.unsubscribe();
+        subscription.unsubscribe();
     });
 </script>
 
-<div class="mb-24">
+<div>
     <Card>
-        <main class="text-gray-700">
+        <main class="text-gray-200">
             {#if events}
                 <div
                         class="max-sm:h-screen"
