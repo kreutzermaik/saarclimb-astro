@@ -8,6 +8,7 @@
     import type {RealtimeChannel} from "@supabase/supabase-js";
     import Card from "./Card.svelte";
     import {colors} from "../TailwindColors";
+    import AddEventDialog from "./AddEventDialog.svelte";
 
 
     let subscription: RealtimeChannel;
@@ -147,18 +148,17 @@
     });
 </script>
 
-<div>
-    <Card>
-        <main class="text-gray-200">
-            {#if events}
-                <div
-                        class="max-sm:h-screen"
-                        style="max-height: 50vh"
-                        bind:this={calendarEl}
-                />
-            {:else}
-                <LoadingSpinner/>
-            {/if}
-        </main>
-    </Card>
+<div class="mt-4">
+    <main class="text-gray-200">
+        {#if events}
+            <div
+                    class="max-sm:h-screen"
+                    style="max-height: 50vh"
+                    bind:this={calendarEl}
+            />
+        {:else}
+            <LoadingSpinner/>
+        {/if}
+    </main>
+    <AddEventDialog propsDate={selectedDate}/>
 </div>
