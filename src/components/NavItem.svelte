@@ -11,7 +11,7 @@
     <a href={`/${text.toLowerCase()}`}>
         {#if text === "Dashboard"}
             <DashboardIcon/>
-        {:else if text === "Progress"}
+        {:else if text === "Fortschritt"}
             <ProgressIcon />
         {:else if text === "Planer"}
             <PlanerIcon />

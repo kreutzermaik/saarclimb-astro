@@ -1,5 +1,6 @@
 // Type imports
 import type { ManifestOptions } from "vite-plugin-pwa"
+import { colors } from "./src/TailwindColors"
 
 /**
  * Defines the default SEO configuration for the website.
@@ -29,9 +30,9 @@ export const manifest: Partial<ManifestOptions> = {
     short_name: "SaarClimb", // Change this to your website's short name.
     description:
         "Die App für Boulderer und Kletterer aus dem Saarland und Umgebung.", // Change this to your websites description.
-    theme_color: "#30E130", // Change this to your primary color.
+    theme_color: colors["dark-grey"], // Change this to your primary color.
     background_color: "#ffffff", // Change this to your background color.
-    display: "minimal-ui",
+    display: "standalone",
     icons: [
         {
             src: "favicon.svg",
