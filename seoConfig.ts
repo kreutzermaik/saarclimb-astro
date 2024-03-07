@@ -9,17 +9,7 @@ export const seoConfig = {
     baseURL: "https://example.com", // Change this to your production URL.
     description:
         "Astro PWA Starter is an opionated Astro starter for building robust static websites.", // Change this to be your website's description.
-    type: "website",
-    image: {
-        url: "https://picsum.photos/1200/630", // Change this to your website's thumbnail.
-        alt: "OpenGraph thumbnail description.", // Change this to your website's thumbnail description.
-        width: 1200,
-        height: 630
-    },
-    siteName: "Astro PWA Starter", // Change this to your website's name,
-    twitter: {
-        card: "summary_large_image"
-    }
+    type: "website"
 }
 
 /**
@@ -35,17 +25,17 @@ export const manifest: Partial<ManifestOptions> = {
     display: "standalone",
     icons: [
         {
-            src: "favicon.svg",
-            sizes: "192x192",
+            src: "favicon-16x16.png",
+            sizes: "16x16",
             type: "image/png"
         },
         {
-            src: "favicon.svg",
-            sizes: "512x512",
+            src: "favicon-16x16.png",
+            sizes: "32x32",
             type: "image/png"
         },
         {
-            src: "favicon.svg",
+            src: "logo.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable"
