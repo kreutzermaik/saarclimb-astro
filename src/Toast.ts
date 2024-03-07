@@ -5,6 +5,8 @@ export default class Toast {
     public static LOGIN_ERROR_MESSAGE = 'Fehler beim Login!';
     public static EVENT_ADDED_MESSAGE = 'Die Trainingseinheit wurde erfolgreich erstellt!';
     public static EVENT_ADDED_ERROR_MESSAGE = 'Die Trainingseinheit konnte nicht erstellt werden!';
+    public static EVENT_FINISHED_MESSAGE = 'Die Trainingseinheit wurde in den Kalender eingetragen!';
+    public static EVENT_REMOVED_MESSAGE = 'Die Trainingseinheit wurde aus dem Kalender entfernt!';
     public static PLAN_UPDATED_MESSAGE = 'Der Wochenplan wurde erfolgreich aktualisiert!';
     public static PLAN_UPDATED_ERROR_MESSAGE = 'Der Wochenplan konnte nicht aktualisiert werden!';
     public static GYM_VALUES_ADDED_MESSAGE = 'Die Boulderhalle wurde erfolgreich angelegt!';

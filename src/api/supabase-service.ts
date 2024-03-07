@@ -118,7 +118,7 @@ export default class SupabaseService {
             .upload(await Session.getCurrentUserId(), file as File, {upsert: true});
     }
 
-    public static async addEvent(event: Event): Promise<void> {
+    public static async addEvent(event: any): Promise<void> {
         await supabase
             .from("events")
             .insert(event)

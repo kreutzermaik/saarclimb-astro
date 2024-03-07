@@ -15,6 +15,8 @@
     import MobilityIcon from "../icons/workout-icons/MobilityIcon.svelte";
     import {isLoggedIn} from "../store.ts";
     import NotLoggedIn from "./NotLoggedIn.svelte";
+    import Toast from "../Toast.ts";
+    import AskLocationDialog from "./AskLocationDialog.svelte";
 
     const TEXT_KEINE_EINHEITEN = 'Es stehen keine Einheiten an.';
 
@@ -69,14 +71,19 @@
             location: '',
         };
         // open AskLocationDialog if event is a climbing event
-        /*        if (event.match("Kletter") || event.match("Boulder") || event.match("Climb")) {
-                    if (item.checked) openDialog();
-                    await SupabaseService.removeEventByDate(event, date);
-                } else {*/
-        item.checked = checked;
-        if (checked) await SupabaseService.addEvent(newEvent);
-        else await SupabaseService.removeEvent(newEvent);
-        /*}*/
+        if (event.match("Kletter") || event.match("Boulder") || event.match("Climb")) {
+            if (item.checked) openDialog();
+            await SupabaseService.removeEventByDate(event, date);
+        } else {
+            item.checked = checked;
+            if (checked) {
+                await SupabaseService.addEvent(newEvent);
+                new Toast().push({content: Toast.EVENT_FINISHED_MESSAGE, style: 'success', duration: 3000});
+            } else {
+                await SupabaseService.removeEvent(newEvent);
+                new Toast().push({content: Toast.EVENT_REMOVED_MESSAGE, style: 'error', duration: 3000});
+            }
+        }
     }
 
     function updatePlan(item: Plan) {
@@ -92,6 +99,13 @@
         }
         const formattedDate = date.toLocaleDateString('de-DE', {month: 'long', day: '2-digit'});
         return day + " (" + formattedDate + ")";
+    }
+
+    /**
+     * open dialog for adding a new event
+     */
+    function openDialog() {
+        document.getElementById("ask-location-dialog")?.classList.remove("hidden");
     }
 
     /**
@@ -170,6 +184,7 @@
                     {/if}
                 </div>
             </div>
+            <AskLocationDialog newEvent={newEvent}/>
         </Card>
 
     {:else}
