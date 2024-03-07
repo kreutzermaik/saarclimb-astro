@@ -10,6 +10,9 @@ import TabBar from "../components/TabBar.svelte";
     <meta name="viewport" content="width=device-width"/>
     <meta name="generator" content={Astro.generator}/>
     <title>SaarClimb</title>
+    <!-- Service worker registration. -->
+    <script is:inline src="/registerSW.js"></script>
+    <link rel="manifest" href="/manifest.webmanifest" />
 </head>
 <body>
 <TabBar />
