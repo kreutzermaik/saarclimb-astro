@@ -1,19 +1,19 @@
 <script lang="ts">
-    import {isLoggedIn} from "../store.ts";
-    import Card from "./Card.svelte";
-    import NotLoggedIn from "./NotLoggedIn.svelte";
-    import Button from "./Button.svelte";
-    import SupabaseService from "../api/supabase-service.ts";
-    import type {Progress} from "../types/Progress.ts";
-    import type {ProgressItem} from "../types/ProgressItem.ts";
+    import {isLoggedIn} from "../../store.ts";
+    import Card from "../_ui/Card.svelte";
+    import NotLoggedIn from "../_ui/NotLoggedIn.svelte";
+    import Button from "../_ui/Button.svelte";
+    import SupabaseService from "../../api/supabase-service.ts";
+    import type {Progress} from "../../types/Progress.ts";
+    import type {ProgressItem} from "../../types/ProgressItem.ts";
     import {onMount, onDestroy} from "svelte";
     import type {RealtimeChannel} from "@supabase/supabase-js";
-    import Toast from "../Toast.ts";
-    import {currentGym, currentGymId, gyms} from "../store.ts";
-    import Chip from "./Chip.svelte";
-    import PlusIcon from "../icons/PlusIcon.svelte";
-    import MinusIcon from "../icons/MinusIcon.svelte";
-    import type {GradeItem} from "../types/GradeItem.ts";
+    import Toast from "../../Toast.ts";
+    import {currentGym, currentGymId, gyms} from "../../store.ts";
+    import Chip from "../_ui/Chip.svelte";
+    import PlusIcon from "../../icons/PlusIcon.svelte";
+    import MinusIcon from "../../icons/MinusIcon.svelte";
+    import type {GradeItem} from "../../types/GradeItem.ts";
 
     let subscription: RealtimeChannel;
 

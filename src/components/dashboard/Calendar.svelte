@@ -3,11 +3,11 @@
     import dayGridPlugin from "@fullcalendar/daygrid";
     import InteractionPlugin from "@fullcalendar/interaction";
     import {onDestroy, onMount} from "svelte";
-    import SupabaseService from "../api/supabase-service.ts";
-    import LoadingSpinner from "./LoadingSpinner.svelte";
+    import SupabaseService from "../../api/supabase-service.ts";
+    import LoadingSpinner from "../_ui/LoadingSpinner.svelte";
     import type {RealtimeChannel} from "@supabase/supabase-js";
-    import Card from "./Card.svelte";
-    import {colors} from "../TailwindColors";
+    import Card from "../_ui/Card.svelte";
+    import {colors} from "../../TailwindColors";
     import AddEventDialog from "./AddEventDialog.svelte";
 
 

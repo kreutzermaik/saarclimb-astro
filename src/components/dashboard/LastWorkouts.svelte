@@ -1,17 +1,17 @@
 <script lang="ts">
-    import Card from "./Card.svelte";
-    import SupabaseService from "../api/supabase-service.ts";
+    import Card from "../_ui/Card.svelte";
+    import SupabaseService from "../../api/supabase-service.ts";
     import {onDestroy, onMount} from "svelte";
     import type {RealtimeChannel} from "@supabase/supabase-js";
-    import Utils from "../Utils.ts";
-    import KraftIcon from "../icons/workout-icons/KraftIcon.svelte";
-    import RunningIcon from "../icons/workout-icons/RunningIcon.svelte";
-    import MobilityIcon from "../icons/workout-icons/MobilityIcon.svelte";
-    import ClimbingIcon from "../icons/workout-icons/ClimbingIcon.svelte";
-    import Button from "./Button.svelte";
+    import Utils from "../../Utils.ts";
+    import KraftIcon from "../../icons/workout-icons/KraftIcon.svelte";
+    import RunningIcon from "../../icons/workout-icons/RunningIcon.svelte";
+    import MobilityIcon from "../../icons/workout-icons/MobilityIcon.svelte";
+    import ClimbingIcon from "../../icons/workout-icons/ClimbingIcon.svelte";
+    import Button from "../_ui/Button.svelte";
     import Calendar from "./Calendar.svelte";
-    import {isLoggedIn} from "../store.ts";
-    import CalendarIcon from "../icons/CalendarIcon.svelte";
+    import {isLoggedIn} from "../../store.ts";
+    import CalendarIcon from "../../icons/CalendarIcon.svelte";
 
 
     let subscription: RealtimeChannel;

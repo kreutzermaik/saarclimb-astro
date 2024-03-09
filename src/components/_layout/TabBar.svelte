@@ -7,9 +7,8 @@
 
 <header>
     <nav class="bg-dark-grey fixed bottom-0 z-10">
-        <div class="grid grid-cols-4 w-screen gap-5 px-1 pt-1">
+        <div class="grid grid-cols-3 w-screen gap-5 px-1 pt-1">
             <NavItem text="Dashboard" />
-            <NavItem text="Planer" />
             <NavItem text="Fortschritt" />
             <NavItem text="Ranking" />
 <!--            <button class={`flex items-center justify-center flex-col cursor-pointer p-2 text-light`}>

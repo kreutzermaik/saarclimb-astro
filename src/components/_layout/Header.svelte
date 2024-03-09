@@ -1,6 +1,6 @@
 <script lang="ts">
-    import SettingsIcon from "../icons/SettingsIcon.svelte";
-    import AvatarIcon from "../icons/AvatarIcon.svelte";
+    import SettingsIcon from "../../icons/SettingsIcon.svelte";
+    import AvatarIcon from "../../icons/AvatarIcon.svelte";
 
     export let title: string;
     let avatar: any;

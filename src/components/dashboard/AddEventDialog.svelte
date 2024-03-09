@@ -1,10 +1,10 @@
 <script lang="ts">
-    import SupabaseService from "../api/supabase-service";
-    import Session from "../session";
-    import type {Event} from "../types/Event";
-    import Button from "./Button.svelte";
-    import {gyms} from "../store";
-    import Toast from "../Toast.ts";
+    import SupabaseService from "../../api/supabase-service.ts";
+    import Session from "../../session.ts";
+    import type {Event} from "../../types/Event.ts";
+    import Button from "../_ui/Button.svelte";
+    import {gyms} from "../../store.ts";
+    import Toast from "../../Toast.ts";
 
     export let propsDate: any;
     $: date = "";

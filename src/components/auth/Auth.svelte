@@ -1,10 +1,10 @@
 <script lang="ts">
-    import {supabase} from "../supabase.ts";
-    import Button from "./Button.svelte";
-    import DataProvider from "../data-provider.ts";
-    import Toast from "../Toast.ts";
-    import Cache from "../cache.ts";
-    import Utils from "../Utils.ts";
+    import {supabase} from "../../supabase.ts";
+    import Button from "../_ui/Button.svelte";
+    import DataProvider from "../../data-provider.ts";
+    import Toast from "../../Toast.ts";
+    import Cache from "../../cache.ts";
+    import Utils from "../../Utils.ts";
 
     export let type: string;
 

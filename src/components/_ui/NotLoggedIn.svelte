@@ -1,8 +1,8 @@
 <script lang="ts">
     import Button from "./Button.svelte";
-    import Utils from "../Utils.ts";
+    import Utils from "../../Utils.ts";
     import Card from "./Card.svelte";
-    import InfoIcon from "../icons/InfoIcon.svelte";
+    import InfoIcon from "../../icons/InfoIcon.svelte";
 </script>
 
 <main class="text-custom-silver">

@@ -1,0 +1,16 @@
+---
+import "../styles/planer.css";
+import TabBar from "../components/_layout/TabBar.svelte";
+import Header from "../components/_layout/Header.svelte";
+import Layout from "../components/_layout/Layout.astro";
+import PlanerForm from "../components/planer/PlanerForm.svelte";
+---
+
+
+<Layout title="Wochenplaner">
+    <Header title="Wochenplaner"/>
+
+    <PlanerForm client:load/>
+
+    <TabBar/>
+</Layout>

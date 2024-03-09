@@ -1,22 +1,23 @@
 <script lang="ts">
-    import Card from "./Card.svelte";
-    import ChipVertical from "./ChipVertical.svelte";
-    import SupabaseService from "../api/supabase-service.ts";
+    import Card from "../_ui/Card.svelte";
+    import ChipVertical from "../_ui/ChipVertical.svelte";
+    import SupabaseService from "../../api/supabase-service.ts";
     import {onDestroy, onMount} from "svelte";
-    import CheckboxIcon from "../icons/CheckboxIcon.svelte";
-    import type {Plan} from "../types/Plan.ts";
-    import type {Event} from "../types/Event.ts";
-    import Session from "../session.ts";
+    import CheckboxIcon from "../../icons/CheckboxIcon.svelte";
+    import type {Plan} from "../../types/Plan.ts";
+    import type {Event} from "../../types/Event.ts";
+    import Session from "../../session.ts";
     import type {RealtimeChannel} from "@supabase/supabase-js";
-    import Utils from "../Utils.ts";
-    import KraftIcon from "../icons/workout-icons/KraftIcon.svelte";
-    import ClimbingIcon from "../icons/workout-icons/ClimbingIcon.svelte";
-    import RunningIcon from "../icons/workout-icons/RunningIcon.svelte";
-    import MobilityIcon from "../icons/workout-icons/MobilityIcon.svelte";
-    import {isLoggedIn} from "../store.ts";
-    import NotLoggedIn from "./NotLoggedIn.svelte";
-    import Toast from "../Toast.ts";
+    import Utils from "../../Utils.ts";
+    import KraftIcon from "../../icons/workout-icons/KraftIcon.svelte";
+    import ClimbingIcon from "../../icons/workout-icons/ClimbingIcon.svelte";
+    import RunningIcon from "../../icons/workout-icons/RunningIcon.svelte";
+    import MobilityIcon from "../../icons/workout-icons/MobilityIcon.svelte";
+    import {isLoggedIn} from "../../store.ts";
+    import NotLoggedIn from "../_ui/NotLoggedIn.svelte";
+    import Toast from "../../Toast.ts";
     import AskLocationDialog from "./AskLocationDialog.svelte";
+    import EditIcon from "../../icons/EditIcon.svelte";
 
     const TEXT_KEINE_EINHEITEN = 'Es stehen keine Einheiten an.';
 
@@ -33,7 +34,6 @@
     onMount(async () => {
         plans = await fetchPlan();
         setInitialDay();
-
 
         subscription = SupabaseService.subscribeToTable(
             "planer",
@@ -132,9 +132,9 @@
 </script>
 
 
-<main>
+<div>
     {#if $isLoggedIn}
-        <Card title="Wochenplan">
+        <Card title="Wochenplan" icon={EditIcon} iconLink="/planer">
 
             <div class="flex justify-between">
                 {#if plans !== undefined && plans.length > 0}
@@ -190,4 +190,4 @@
     {:else}
         <NotLoggedIn/>
     {/if}
-</main>
+</div>

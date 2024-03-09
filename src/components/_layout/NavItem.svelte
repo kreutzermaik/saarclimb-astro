@@ -1,8 +1,8 @@
 <script lang="ts">
-    import DashboardIcon from "../icons/DashboardIcon.svelte";
-    import ProgressIcon from "../icons/ProgressIcon.svelte";
-    import PlanerIcon from "../icons/PlanerIcon.svelte";
-    import RankingIcon from "../icons/RankingIcon.svelte";
+    import DashboardIcon from "../../icons/DashboardIcon.svelte";
+    import ProgressIcon from "../../icons/ProgressIcon.svelte";
+    import PlanerIcon from "../../icons/PlanerIcon.svelte";
+    import RankingIcon from "../../icons/RankingIcon.svelte";
 
     export let text: string;
 </script>

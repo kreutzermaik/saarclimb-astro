@@ -1,14 +1,14 @@
 <script lang="ts">
-    import Cache from "../cache.ts";
-    import {supabase} from "../supabase";
+    import Cache from "../../cache.ts";
+    import {supabase} from "../../supabase.ts";
     import {onMount} from "svelte";
-    import Button from "./Button.svelte";
-    import HelpIcon from "../icons/HelpIcon.svelte";
-    import Session from "../session.ts";
-    import Toast from "../Toast.ts";
-    import SupabaseService from "../api/supabase-service.ts";
-    import Utils from "../Utils.ts";
-    import Card from "./Card.svelte";
+    import Button from "../_ui/Button.svelte";
+    import HelpIcon from "../../icons/HelpIcon.svelte";
+    import Session from "../../session.ts";
+    import Toast from "../../Toast.ts";
+    import SupabaseService from "../../api/supabase-service.ts";
+    import Utils from "../../Utils.ts";
+    import Card from "../_ui/Card.svelte";
 
 
     $: gym = "";
@@ -64,8 +64,8 @@
 </script>
 
 <main class="mb-20">
-    <Card title="Neue Halle hinzufügen">
-        {#if isAdmin}
+    {#if isAdmin}
+        <Card title="Neue Halle hinzufügen">
             <div class="admin-panel">
                 <form class="space-y-4 md:space-y-6" action="#">
                     <div>
@@ -94,8 +94,8 @@
                         onClick={() => addGymToDb()}
                 />
             </div>
-        {/if}
-    </Card>
+        </Card>
+    {/if}
 
     <br>
 

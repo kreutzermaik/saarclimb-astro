@@ -1,9 +1,9 @@
 <script lang="ts">
-    import {gyms} from "../store.ts";
-    import Button from "./Button.svelte";
-    import type {Event} from "../types/Event";
-    import SupabaseService from "../api/supabase-service";
-    import Toast from "../Toast";
+    import {gyms} from "../../store.ts";
+    import Button from "../_ui/Button.svelte";
+    import type {Event} from "../../types/Event.ts";
+    import SupabaseService from "../../api/supabase-service.ts";
+    import Toast from "../../Toast.ts";
 
     export let newEvent: Event;
     $: location = "";
@@ -39,7 +39,7 @@
      aria-modal="true">
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
 
-    <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="fixed inset-0 z-10 mb-24 overflow-y-auto">
         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
