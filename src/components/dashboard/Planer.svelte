@@ -154,31 +154,33 @@
                 <h3 class="text-lg">📅 {getDateHeader(selectedDay.day)}</h3>
                 <br>
                 <div class="text-lighter">
-                    {#if selectedDay.value !== '' && selectedDay.value !== TEXT_KEINE_EINHEITEN}
-                        <div class="flex gap-0 justify-between">
-                            <div class="flex gap-2">
-                                {#if selectedDay.value === "Bouldern" || selectedDay.value === "Klettern"}
-                                    <ClimbingIcon/>
-                                {:else if selectedDay.value === "Laufen"}
-                                    <RunningIcon/>
-                                {:else if selectedDay.value === "Mobility" || selectedDay.value === "Stretching" || selectedDay.value === "Dehnen"}
-                                    <MobilityIcon/>
-                                {:else}
-                                    <KraftIcon/>
-                                {/if}
-                                <p class="text-custom-silver mt-1">{selectedDay.value}</p>
+                    {#if selectedDay.value !== '' && selectedDay.value.length > 0 && selectedDay.value !== TEXT_KEINE_EINHEITEN}
+                        {#each selectedDay.value as item}
+                            <div class="flex gap-0 justify-between">
+                                <div class="flex gap-2">
+                                    {#if item === "Bouldern" || item === "Klettern"}
+                                        <ClimbingIcon/>
+                                    {:else if item === "Laufen"}
+                                        <RunningIcon/>
+                                    {:else if item === "Mobility" || item === "Stretching" || item === "Dehnen"}
+                                        <MobilityIcon/>
+                                    {:else}
+                                        <KraftIcon/>
+                                    {/if}
+                                    <p class="text-custom-silver mt-1">{item}</p>
+                                </div>
+          <!--                      <div class="checkbox-wrapper ml-4 mt-0.5">
+                                    <label class="toggleButton">
+                                        <input type="checkbox" checked={selectedDay.checked}
+                                               bind:value={selectedDay.checked}
+                                               on:click={() => updatePlan(selectedDay)}>
+                                        <div>
+                                            <CheckboxIcon/>
+                                        </div>
+                                    </label>
+                                </div>-->
                             </div>
-                            <div class="checkbox-wrapper ml-4 mt-0.5">
-                                <label class="toggleButton">
-                                    <input type="checkbox" checked={selectedDay.checked}
-                                           bind:value={selectedDay.checked}
-                                           on:click={() => updatePlan(selectedDay)}>
-                                    <div>
-                                        <CheckboxIcon/>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                        {/each}
                     {:else }
                         <p>{TEXT_KEINE_EINHEITEN}</p>
                     {/if}

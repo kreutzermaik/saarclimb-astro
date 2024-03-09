@@ -3,8 +3,8 @@
     export let onClick: Function = () => {};
 </script>
 
-<button class={`chip-vertical ${content !== "" ? 'cursor-pointer' : ''}`} on:click={() => onClick()}>
-    {#if content !== ""}
+<button class={`chip-vertical cursor-pointer}`} on:click={() => onClick()}>
+    {#if content !== "" && content.length > 0}
         <hr class="border-2 border-accent w-full mx-1">
     {/if}
 </button>
