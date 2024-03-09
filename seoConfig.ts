@@ -23,6 +23,7 @@ export const manifest: Partial<ManifestOptions> = {
     theme_color: "#0F0F10",
     background_color: "#ffffff", // Change this to your background color.
     display: "standalone",
+    start_url: "/dashboard",
     icons: [
         {
             src: "favicon-16x16.png",
