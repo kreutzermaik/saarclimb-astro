@@ -7,7 +7,7 @@
 
 <div>
     <h1 class="text-4xl font-bold p-8 text-center">
-        🧗 Die SaarClimb App 💪🏼
+        SaarClimb App 🧗💪🏼
     </h1>
     <h2 class="text-xl font-medium text-center mx-8">
         Die <strong>Boulder-App</strong> für Sportler aus dem <strong>Saarland</strong> und Umgebung!
