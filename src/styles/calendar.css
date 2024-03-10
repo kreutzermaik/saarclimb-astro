@@ -7,3 +7,22 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
     border-collapse: separate;
     border-radius: 10px;
 }
+
+/* Accordion */
+.calendar-accordion {
+    svg {
+        margin-inline: initial;
+    }
+
+    button {
+        background-color: theme('colors.lighter-grey');
+    }
+
+    button:hover {
+        background-color: theme('colors.light-grey');
+    }
+
+    span {
+        color: theme('colors.gray.400');
+    }
+}

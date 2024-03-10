@@ -169,7 +169,7 @@
                                     {/if}
                                     <p class="text-custom-silver mt-1">{item}</p>
                                 </div>
-          <!--                      <div class="checkbox-wrapper ml-4 mt-0.5">
+                                <div class="checkbox-wrapper ml-4 mt-0.5">
                                     <label class="toggleButton">
                                         <input type="checkbox" checked={selectedDay.checked}
                                                bind:value={selectedDay.checked}
@@ -178,7 +178,7 @@
                                             <CheckboxIcon/>
                                         </div>
                                     </label>
-                                </div>-->
+                                </div>
                             </div>
                         {/each}
                     {:else }

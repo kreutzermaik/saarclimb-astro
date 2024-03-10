@@ -8,15 +8,13 @@
     import RunningIcon from "../../icons/workout-icons/RunningIcon.svelte";
     import MobilityIcon from "../../icons/workout-icons/MobilityIcon.svelte";
     import ClimbingIcon from "../../icons/workout-icons/ClimbingIcon.svelte";
-    import Button from "../_ui/Button.svelte";
     import Calendar from "./Calendar.svelte";
     import {isLoggedIn} from "../../store.ts";
-    import CalendarIcon from "../../icons/CalendarIcon.svelte";
+    import {AccordionItem, Accordion} from 'flowbite-svelte';
 
 
     let subscription: RealtimeChannel;
     let events: any = [];
-    let isCalendarVisible: boolean = false;
 
 
     onMount(async () => {
@@ -92,14 +90,15 @@
                 {/each}
             {/if}
 
-            <div class="flex justify-end mt-2">
-                <Button text={`${!isCalendarVisible ? '📅 Kalender anzeigen' : '❌ Kalender ausblenden'}`} type="primary" width="w-full"
-                        onClick={() => isCalendarVisible = !isCalendarVisible}/>
+            <br>
+            <div class="calendar-accordion">
+                <Accordion>
+                    <AccordionItem>
+                        <span slot="header">📅 Kalenderübersicht</span>
+                        <Calendar/>
+                    </AccordionItem>
+                </Accordion>
             </div>
-
-            {#if isCalendarVisible}
-                <Calendar/>
-            {/if}
         </Card>
     {/if}
 </main>

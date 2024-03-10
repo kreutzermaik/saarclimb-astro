@@ -148,8 +148,8 @@
     });
 </script>
 
-<div class="mt-4">
-    <main class="text-gray-200">
+<div id="calendar" class="mt-4">
+    <div class="text-gray-200">
         {#if events}
             <div
                     class="max-sm:h-screen"
@@ -159,6 +159,6 @@
         {:else}
             <LoadingSpinner/>
         {/if}
-    </main>
+    </div>
     <AddEventDialog propsDate={selectedDate}/>
 </div>
